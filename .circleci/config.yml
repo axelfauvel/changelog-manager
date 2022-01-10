@@ -1,0 +1,72 @@
+version: 2.1
+orbs: 
+  python: circleci/python@1.5.0
+jobs:
+
+  tests-pylint:
+    docker: 
+      - image: circleci/python:3.9
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+      - python/install-packages:
+          pip-dependency-file: requirements-dev.txt
+          pkg-manager: pip
+      - run:
+          command: |
+            pylint changelog_manager
+          name: pylint
+
+  tests-safety:
+    docker: 
+      - image: circleci/python:3.9
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+      - python/install-packages:
+          pip-dependency-file: requirements-dev.txt
+          pkg-manager: pip
+      - run:
+          command: |
+            safety check
+          name: safety
+
+  tests-pytest-unit:
+    docker: 
+      - image: circleci/python:3.9
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+      - python/install-packages:
+          pip-dependency-file: requirements-dev.txt
+          pkg-manager: pip
+      - run:
+          command: |
+            pytest tests/unit
+          name: pytest unit
+
+  tests-bandit:
+    docker: 
+      - image: circleci/python:3.9
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+      - python/install-packages:
+          pip-dependency-file: requirements-dev.txt
+          pkg-manager: pip
+      - run:
+          command: |
+            bandit changelog_manager -lll
+          name: bandit
+
+workflows:
+  tests:
+    jobs:
+      - tests-safety
+      - tests-pylint
+      - tests-pytest-unit
+      - tests-bandit
