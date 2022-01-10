@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.3] - 2022-01-10
+### Fixed
+- add changelog_manager module in package
 ## [1.0.2] - 2022-01-10
 ### Fixed
 - update `setup.py` classifiers & project_urls

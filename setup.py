@@ -12,7 +12,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
     name="changelog_manager",
-    version="1.0.2",
+    version="1.0.3",
     description="Easily manage your changelog using this CLI",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -20,7 +20,9 @@ setup(
     author="Axel FAUVEL",
     author_email="axel.fauvel@gmail.com",
     license="MIT",
-    packages=find_packages(include=["changelog_manager.*"]),
+    packages=find_packages(
+        include=["changelog_manager", "changelog_manager.*"]
+    ),
     install_requires=required_packages,
     zip_safe=False,
     entry_points={
