@@ -2,7 +2,11 @@
 
 https://pypi.org/project/changelog-manager/
 
-changelog_manager helps you manage your changelog
+changelog_manager helps you manage your changelog.
+
+This project uses [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
+
+It mainly uses [keepachangelog](https://github.com/Colin-b/keepachangelog) library and adds a CLI above it.
 
 ## How to install it?
 
