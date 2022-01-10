@@ -4,10 +4,18 @@ import os
 with open("requirements.txt") as f:
     required_packages = f.read().splitlines()
 
+# read the contents of your README file
+from pathlib import Path
+
+this_directory = Path(__file__).parent
+long_description = (this_directory / "README.md").read_text()
+
 setup(
     name="changelog_manager",
-    version="1.0.0",
-    description="Manage your changelog using this CLI",
+    version="1.0.1",
+    description="Easily manage your changelog using this CLI",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     url="https://github.com/pycom/compilation_api",
     author="Axel FAUVEL",
     author_email="axel.fauvel@gmail.com",
