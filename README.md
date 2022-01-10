@@ -1,5 +1,7 @@
 # changelog-manager
 
+https://pypi.org/project/changelog-manager/
+
 changelog_manager helps you manage your changelog
 
 ## How to install it?
