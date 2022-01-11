@@ -14,11 +14,7 @@ commands:
           command: |
             pytest tests/unit
           name: pytest unit
-
-jobs:
-  tests-pylint:
-    docker: 
-      - image: circleci/python:3.9
+  pylint:
     steps:
       - checkout
       - python/install-packages:
@@ -30,10 +26,7 @@ jobs:
           command: |
             pylint changelog_manager
           name: pylint
-
-  tests-safety:
-    docker: 
-      - image: circleci/python:3.9
+  safety:
     steps:
       - checkout
       - python/install-packages:
@@ -45,28 +38,7 @@ jobs:
           command: |
             safety check
           name: safety
-
-  tests-pytest-unit-3.9:
-    docker: 
-      - image: circleci/python:3.9
-    steps:
-      - pytest-unit
-
-  tests-pytest-unit-3.8:
-    docker:
-      - image: circleci/python:3.8
-    steps:
-      - pytest-unit
-
-  tests-pytest-unit-3.7:
-    docker:
-      - image: circleci/python:3.7
-    steps:
-      - pytest-unit
-
-  tests-bandit:
-    docker: 
-      - image: circleci/python:3.9
+  bandit:
     steps:
       - checkout
       - python/install-packages:
@@ -79,12 +51,84 @@ jobs:
             bandit changelog_manager -lll
           name: bandit
 
+jobs:
+  tests-pylint-3-9:
+    docker: 
+      - image: circleci/python:3.9
+    steps:
+      - pylint
+  tests-pylint-3-8:
+    docker: 
+      - image: circleci/python:3.8
+    steps:
+      - pylint
+  tests-pylint-3-7:
+    docker: 
+      - image: circleci/python:3.7
+    steps:
+      - pylint
+
+  tests-safety-3-9:
+    docker: 
+      - image: circleci/python:3.9
+    steps:
+      - safety
+  tests-safety-3-8:
+    docker: 
+      - image: circleci/python:3.8
+    steps:
+      - safety
+  tests-safety-3-7:
+    docker: 
+      - image: circleci/python:3.7
+    steps:
+      - safety
+
+  tests-pytest-unit-3-9:
+    docker: 
+      - image: circleci/python:3.9
+    steps:
+      - pytest-unit
+  tests-pytest-unit-3-8:
+    docker:
+      - image: circleci/python:3.8
+    steps:
+      - pytest-unit
+  tests-pytest-unit-3-7:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - pytest-unit
+
+  tests-bandit-3-9:
+    docker: 
+      - image: circleci/python:3.9
+    steps:
+      - bandit
+  tests-bandit-3-8:
+    docker: 
+      - image: circleci/python:3.8
+    steps:
+      - bandit
+  tests-bandit-3-7:
+    docker: 
+      - image: circleci/python:3.7
+    steps:
+      - bandit
+
+
 workflows:
   tests:
     jobs:
-      - tests-safety
-      - tests-pylint
-      - tests-pytest-unit-3.9
-      - tests-pytest-unit-3.8
-      - tests-pytest-unit-3.7
-      - tests-bandit
+      - tests-pytest-unit-3-9
+      - tests-pytest-unit-3-8
+      - tests-pytest-unit-3-7
+      - tests-safety-3-9
+      - tests-safety-3-8
+      - tests-safety-3-7
+      - tests-pylint-3-9
+      - tests-pylint-3-8
+      - tests-pylint-3-7
+      - tests-bandit-3-9
+      - tests-bandit-3-8
+      - tests-bandit-3-7
