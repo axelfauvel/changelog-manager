@@ -5,7 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-
+### Added
+- compatibility for python 3.8
+- compatibility for python 3.7
 ## [1.0.3] - 2022-01-10
 ### Fixed
 - add changelog_manager module in package
