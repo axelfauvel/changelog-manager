@@ -30,7 +30,7 @@ setup(
             "changelog-manager=changelog_manager.__main__:cli"
         ],
     },
-    python_requires=">=3.9",
+    python_requires=">=3.7",
     classifiers=[
         # How mature is this project? Common values are
         #   3 - Alpha
@@ -43,6 +43,8 @@ setup(
         # Pick your license as you wish (should match "license" above)
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.7",
     ],
     project_urls={
         "Documentation": "https://pypi.org/project/changelog-manager/#description",

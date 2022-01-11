@@ -1,8 +1,21 @@
 version: 2.1
 orbs: 
   python: circleci/python@1.5.0
-jobs:
+commands:
+  pytest-unit:
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+      - python/install-packages:
+          pip-dependency-file: requirements-dev.txt
+          pkg-manager: pip
+      - run:
+          command: |
+            pytest tests/unit
+          name: pytest unit
 
+jobs:
   tests-pylint:
     docker: 
       - image: circleci/python:3.9
@@ -33,20 +46,23 @@ jobs:
             safety check
           name: safety
 
-  tests-pytest-unit:
+  tests-pytest-unit-3.9:
     docker: 
       - image: circleci/python:3.9
     steps:
-      - checkout
-      - python/install-packages:
-          pkg-manager: pip
-      - python/install-packages:
-          pip-dependency-file: requirements-dev.txt
-          pkg-manager: pip
-      - run:
-          command: |
-            pytest tests/unit
-          name: pytest unit
+      - pytest-unit
+
+  tests-pytest-unit-3.8:
+    docker:
+      - image: circleci/python:3.8
+    steps:
+      - pytest-unit
+
+  tests-pytest-unit-3.7:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - pytest-unit
 
   tests-bandit:
     docker: 
@@ -68,5 +84,7 @@ workflows:
     jobs:
       - tests-safety
       - tests-pylint
-      - tests-pytest-unit
+      - tests-pytest-unit-3.9
+      - tests-pytest-unit-3.8
+      - tests-pytest-unit-3.7
       - tests-bandit
