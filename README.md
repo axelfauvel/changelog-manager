@@ -28,3 +28,11 @@ Commands:
   release  Release unrealeased items in changelog
   suggest  Suggest future version from changelog
 ```
+
+## release
+* release the changelog
+* Update version in `changelog_manager/_version.py`
+* Create a commit and tag using the version
+* run `python setup.py sdist bdist_wheel`
+* run `twine upload -r testpypi dist/*`
+* run `twine upload -r pypi dist/*`
