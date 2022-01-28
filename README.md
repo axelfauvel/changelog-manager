@@ -19,6 +19,7 @@ It mainly uses [keepachangelog](https://github.com/Colin-b/keepachangelog) libra
 Usage: changelog-manager [OPTIONS] COMMAND [ARGS]...
 
 Options:
+  --version  Show the version and exit.
   --help  Show this message and exit.
 
 Commands:
