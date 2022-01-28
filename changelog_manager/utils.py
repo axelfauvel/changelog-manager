@@ -36,6 +36,25 @@ class ChangelogManager:
         """
         return self.__current_version
 
+    def add(self, change_type: str, change_description: str) -> None:
+        """
+        Add a new change in Unreleased section
+
+        Args:
+            change_type (str): type of change, conform to keepachangelog
+            change_description (str): Change description
+        """
+        if not self.__changelog["unreleased"].get(change_type):
+            self.__changelog["unreleased"][change_type] = []
+        self.__changelog["unreleased"][change_type].append(change_description)
+
+    def commit(self) -> None:
+        """
+        commit the changelog
+        """
+        with open(self.__changelog_path, "w", encoding="utf-8") as changelog:
+            changelog.write(keepachangelog.from_dict(self.__changelog))
+
     def display(self, version: str) -> str:
         """
         display markdown formatted changes for a given version

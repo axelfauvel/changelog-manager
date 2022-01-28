@@ -22,6 +22,7 @@ Options:
   --help  Show this message and exit.
 
 Commands:
+  add      Add a new changelog entry.
   current  Get current version from changelog
   display  display changes according to changelog
   release  Release unrealeased items in changelog
