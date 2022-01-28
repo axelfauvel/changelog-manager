@@ -1,8 +1,10 @@
 import click
 from changelog_manager.utils import ChangelogManager
+from changelog_manager._version import __version__
 
 
 @click.group()
+@click.version_option(__version__)
 def cli():
     pass
 

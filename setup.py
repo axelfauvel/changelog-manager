@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-import os
+from changelog_manager._version import __version__
 
 with open("requirements.txt") as f:
     required_packages = f.read().splitlines()
@@ -12,7 +12,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
     name="changelog_manager",
-    version="1.2.0",
+    version=__version__,
     description="Easily manage your changelog using this CLI",
     long_description=long_description,
     long_description_content_type="text/markdown",
