@@ -1,5 +1,7 @@
 # changelog-manager
 
+wouhou, pensez à vérouiller votre session...
+
 https://pypi.org/project/changelog-manager/
 
 changelog_manager helps you manage your changelog.
