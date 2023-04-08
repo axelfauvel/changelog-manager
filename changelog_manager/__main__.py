@@ -81,5 +81,19 @@ def add(change_type, change_description, changelog):
     changelog_manager.commit()
 
 
+@cli.command()
+@click.option(
+    "--changelog",
+    help="changelog file, default to CHANGELOG.md",
+    default="CHANGELOG.md",
+)
+def init(changelog):
+    """
+    Create a new changelog file. ex:
+    changelog-manager init
+    """
+    ChangelogManager.init(changelog)
+
+
 if __name__ == "__main__":
     cli()
