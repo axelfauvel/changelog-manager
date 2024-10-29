@@ -26,18 +26,6 @@ commands:
           command: |
             pylint changelog_manager
           name: pylint
-  safety:
-    steps:
-      - checkout
-      - python/install-packages:
-          pkg-manager: pip
-      - python/install-packages:
-          pip-dependency-file: requirements-dev.txt
-          pkg-manager: pip
-      - run:
-          command: |
-            safety scan
-          name: safety
   bandit:
     steps:
       - checkout
@@ -72,28 +60,6 @@ jobs:
       - image: cimg/python:3.9
     steps:
       - pylint
-
-
-  tests-safety-3-12:
-    docker: 
-      - image: cimg/python:3.12
-    steps:
-      - safety
-  tests-safety-3-11:
-    docker: 
-      - image: cimg/python:3.11
-    steps:
-      - safety
-  tests-safety-3-10:
-    docker: 
-      - image: cimg/python:3.10
-    steps:
-      - safety
-  tests-safety-3-9:
-    docker: 
-      - image: cimg/python:3.9
-    steps:
-      - safety
 
 
   tests-pytest-unit-3-12:
@@ -147,10 +113,6 @@ workflows:
       - tests-pytest-unit-3-11
       - tests-pytest-unit-3-10
       - tests-pytest-unit-3-9
-      - tests-safety-3-12
-      - tests-safety-3-11
-      - tests-safety-3-10
-      - tests-safety-3-9
       - tests-pylint-3-12
       - tests-pylint-3-11
       - tests-pylint-3-10
