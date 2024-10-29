@@ -42,9 +42,10 @@ setup(
         "Topic :: Software Development :: Build Tools",
         # Pick your license as you wish (should match "license" above)
         "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python :: 3.9",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.9"
     ],
     project_urls={
         "Documentation": "https://pypi.org/project/changelog-manager/#description",
