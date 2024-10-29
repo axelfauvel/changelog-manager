@@ -49,13 +49,13 @@ class ChangelogManager:
         return self.__current_version
 
     @classmethod
-    def init(self, changelog_path: str, force: bool = False) -> None:
+    def init(cls, changelog_path: str, force: bool = False) -> None:
         """
         Create a new changelog file
         """
         if Path(changelog_path).exists() and not force:
             raise FileExistsError
-        with open(changelog_path, "wt") as f:
+        with open(changelog_path, "wt", encoding="utf-8") as f:
             f.write(CHANGELOG_HEADER)
 
     def add(self, change_type: str, change_description: str) -> None:
