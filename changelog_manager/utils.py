@@ -100,8 +100,8 @@ class ChangelogManager:
                 changes_md += f"- {element}\n"
         return changes_md
 
-    def release(self):
+    def release(self, version):
         """
         create a new release in the changelog using Unreleased part
         """
-        keepachangelog.release(self.__changelog_path)
+        keepachangelog.release(self.__changelog_path, version)

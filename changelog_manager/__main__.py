@@ -1,4 +1,6 @@
 import sys
+from typing import Optional
+
 import click
 from changelog_manager.utils import ChangelogManager
 from changelog_manager._version import __version__
@@ -38,9 +40,10 @@ def suggest(changelog: str) -> None:
     help="changelog file, default to CHANGELOG.md",
     default="CHANGELOG.md",
 )
-def release(changelog: str) -> None:
+@click.option("--version", help="version changes to display", default=None)
+def release(changelog: str, version: Optional[str]) -> None:
     changelog_manager = ChangelogManager(changelog)
-    changelog_manager.release()
+    changelog_manager.release(version)
 
 
 @cli.command(help="display changes according to changelog")
